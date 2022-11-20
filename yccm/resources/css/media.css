@@ -1,0 +1,8 @@
+/* Portrait phones and smaller */
+@media (max-width: 480px) {
+  header .container {
+    grid-template-columns: auto minmax(auto, 1fr) auto;
+    justify-content: space-between;
+    align-items: center;
+  }
+}

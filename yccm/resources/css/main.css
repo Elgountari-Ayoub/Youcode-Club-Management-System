@@ -1,0 +1,490 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+
+  /* transition: 1s; */
+}
+
+:root {
+  --primary-color: #38344e;
+  --secondary-color: #0f4aa2;
+  --main-bg-color: #f1f8ff;
+}
+/* System Design */
+
+/* General Style */
+
+html {
+  width: 100%;
+  font-size: 62.5%;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--main-bg-color);
+  color: var(--primary-color);
+}
+
+.container {
+  padding: 2rem 4rem;
+}
+button {
+  border: none;
+  padding: 1rem;
+}
+
+.btn {
+  cursor: pointer;
+}
+
+a {
+  color: #474554;
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+  display: flex;
+}
+
+.form-control:focus {
+  box-shadow: 0 0 0 0.25rem var(--secondary-color);
+  border-color: var(--secondary-color);
+}
+
+::selection {
+  background-color: var(--secondary-color);
+  color: #fff;
+}
+
+/* HEADER */
+/* grid-template-columns: repeat(auto-fit, minmax(min-content, max-content)); */
+/* grid-template-columns: repeat(2, 1fr); */
+/* grid-template-columns: repeat(auto-fill, minmax(auto, 1fr)); */
+
+/* header {
+} */
+
+header .container {
+  display: grid;
+  grid-template-columns: auto minmax(auto, 1fr) auto;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header a.go-home {
+  max-width: 10rem;
+}
+
+img.logo {
+  min-width: 10rem;
+  width: 100%;
+}
+
+nav ul {
+  justify-content: center;
+  align-items: center;
+  gap: 5rem;
+  margin-bottom: 0;
+}
+
+nav ul a {
+  font-size: 1.8rem;
+}
+
+/* nav ul a:hover {
+  color: var(--secondary-color);
+} */
+
+img.sign-in {
+  min-width: 4rem;
+  max-width: 70%;
+  justify-self: end;
+  grid-column: 4;
+}
+
+/* FOOTER */
+
+footer {
+  /* position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%); */
+}
+footer .container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5rem;
+}
+
+footer p {
+  font-size: 1.6rem;
+}
+
+footer a {
+  color: var(--secondary-color);
+}
+
+/* SECTION DISCOVER CLUBS */
+/* section.discover-clubs {
+} */
+section.discover-clubs .container {
+  width: 100%;
+  display: grid;
+  /* grid-template-columns: repeat(auto-fit, calc((100% / 3) - 1%)); */
+  grid-template-columns: repeat(auto-fill, minmax(30rem, 1fr));
+  gap: 5rem;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+}
+
+section.discover-clubs .club {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  /* gap: 2rem; */
+
+  border-radius: 1rem;
+  /* width: 40rem; */
+  overflow: hidden;
+
+  background-color: #fff;
+}
+
+section.discover-clubs .details {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+
+  padding: 1rem 2rem;
+}
+
+section.discover-clubs .cover {
+  height: 20rem;
+  background-image: url("../media/images/club-cover/club-2.jpg");
+  background-size: cover;
+}
+section.discover-clubs .club:nth-child(odd) .cover {
+  height: 20rem;
+  background-image: url("../media/images/club-cover/club-2.jpg");
+  background-size: cover;
+}
+
+section.discover-clubs .details-1 {
+  display: flex;
+  justify-content: space-between;
+}
+
+section.discover-clubs .title {
+  font-size: 2.4rem;
+}
+
+section.discover-clubs .members-number {
+  color: #7400bc;
+  font-size: 1.6rem;
+}
+
+section.discover-clubs .description {
+  line-height: 1.6;
+  font-size: 1.6rem;
+}
+
+section.discover-clubs .members-icons {
+  display: flex;
+  align-items: center;
+}
+
+section.discover-clubs .members-icons span,
+.section-club .container table td.members span.more-members {
+  color: var(--primary-color);
+  color: var(--secondary-color);
+  color: white;
+  font-weight: 600;
+  border-radius: 1rem;
+  font-size: 1.7rem;
+  text-align: center;
+  padding: 1rem 0.7rem;
+  background-color: var(--secondary-color);
+  background-color: #47455455;
+  transform: translateX(220%);
+  display: inline-block;
+}
+/* section.discover-clubs */
+.members-icons img {
+  position: absolute;
+  border-radius: 50%;
+  min-width: 3rem;
+  max-width: 5rem;
+}
+
+/* section.discover-clubs  */
+.members-icons img:nth-child(2) {
+  transform: translateX(40%);
+}
+/* section.discover-clubs  */
+.members-icons img:nth-child(3) {
+  transform: translateX(80%);
+}
+/* section.discover-clubs  */
+.members-icons img:nth-child(4) {
+  transform: translateX(120%);
+}
+/* section.discover-clubs  */
+.members-icons img:nth-child(5) {
+  transform: translateX(160%);
+}
+/* section.discover-clubs  */
+.members-icons img:nth-child(6) {
+  transform: translateX(200%);
+}
+
+section.discover-clubs .members-icons img:last-of-type {
+  /* filter: blur(0.09rem); */
+  /* filter: brightness(0.5); */
+}
+
+section.discover-clubs button {
+  background-color: transparent;
+}
+section.discover-clubs button a {
+  color: var(--secondary-color);
+  font-size: 1.8rem;
+}
+
+/* MEMBER SECTION */
+
+.section-club .container,
+.section-member .container,
+.section-member-management .container {
+  min-height: 70vh;
+}
+.section-club .container table,
+.section-member .container table {
+  /* text-align: center; */
+}
+
+/* .section-club .container,
+.section-member .container table th {
+} */
+
+.section-club .container table th[scope="col"],
+.section-member .container table th[scope="col"] {
+  background-color: var(--secondary-color);
+  color: #eee;
+}
+
+.section-club .container table th,
+.section-club .container table td,
+.section-member .container table th,
+.section-member .container table td {
+  /* text-align: center; */
+  padding-left: 1rem;
+  font-size: 1.4rem;
+}
+/* .section-club .container table th, */
+/* .section-member .container table th, */
+.section-member .container table td:not(td.logo),
+.section-member .container table td:not(td.logo),
+.section-club .container table td:not(td.logo),
+.section-club .container table td:not(td.logo) {
+  padding-top: 2rem;
+}
+
+table {
+  margin-top: 2rem;
+}
+
+.section-club .container button,
+.section-member button {
+  font-size: 1.8rem;
+}
+.section-club .container button.btn-primary,
+.section-member button {
+  background-color: var(--secondary-color);
+}
+.section-club .container button.btn-danger,
+.section-member button.btn-danger {
+  background-color: red;
+}
+
+/* MEMBER MANAGEMENT SECTION [FORM] */
+
+.section-member-management .container {
+  max-width: 60rem;
+}
+
+form.member-form,
+form.member-form button {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+
+  font-size: 1.8rem;
+}
+
+form input[type="file"] {
+}
+
+form.member-form .form-check {
+  font-size: 1.6rem;
+}
+form.member-form .role {
+  display: flex;
+  width: 100%;
+  gap: 5rem;
+  align-items: center;
+}
+
+form.member-form .role div {
+  display: flex;
+  align-items: end;
+  gap: 1rem;
+}
+form ::placeholder,
+form select.form-control {
+  font-size: 1.2rem;
+}
+
+form.member-form input {
+  margin-top: 1rem;
+  padding: 1rem;
+}
+
+form.member-form button {
+  width: fit-content;
+}
+form.member-form .form-group .role {
+  display: flex;
+  flex-direction: row;
+}
+
+/* /////////////////// */
+
+/* SECTION CLUB */
+.section-member .container table img,
+.section-club .container table img {
+  border-radius: 50%;
+  width: 5rem;
+  height: 5rem;
+}
+
+.section-club .container table .creationDate {
+  /* min-width: 15rem; */
+}
+.section-club .container table .description {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 3rem;
+}
+
+.section-club .container table .members select {
+  width: 50%;
+  /* margin-left: 25%; */
+}
+
+/* Club Row */
+form.club-row,
+form.club-row {
+}
+
+.member-icons img.club--member-photo {
+  width: 100%;
+  background-color: red;
+}
+
+.section-club .container table td.members {
+  padding-top: 0.5rem !important;
+  top: 0;
+}
+
+.section-club .container table td.members span.more-members {
+  z-index: 999;
+}
+
+.container table tr td.action:last-child {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+
+  padding-left: 4rem;
+
+  justify-content: center;
+}
+
+.section-member .container table tr td:last-child {
+  text-align: center;
+}
+
+.container table tr th:last-child {
+  text-align: center;
+}
+
+.container table th[scope="row"] {
+  padding-top: 2rem !important;
+}
+
+.section-club .container table td.members img,
+.section-member .container table td.members img {
+  width: 4rem;
+  height: 4rem;
+  background-color: blue;
+}
+
+.section-club .container table td.members {
+  position: relative;
+  padding-top: 0rem !important;
+  padding-bottom: 0;
+}
+
+.section-club .container table td.members img,
+.section-club .container table td.members span.more-members {
+  margin-top: 1rem;
+}
+
+.section-club .container table td.members span.more-members {
+  padding: 1rem 0.5rem;
+  font-size: 1.6rem;
+  transform: translateX(100%);
+}
+
+.section-sign {
+  height: 75vh;
+}
+
+.section-sign .container form h1 {
+  text-align: center;
+  font-weight: 600;
+  font-size: 2rem;
+  text-transform: capitalize;
+  letter-spacing: 0.1rem;
+}
+.section-sign .container form {
+  color: var(--primary-color);
+  width: 50%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  font-size: 1.8rem;
+}
+
+.section-sign .container form div {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  font-size: 1.8rem;
+}
+
+.section-sign .container form input {
+  padding: 1rem;
+}
+.section-sign .container form button.btn {
+  width: fit-content;
+  font-size: 1.6rem;
+}
