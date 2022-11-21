@@ -3,6 +3,11 @@
   <div class="container">
     <form class="member-form">
       <div class="form-group">
+        <label for="chooseLogo">Photo</label>
+        <br>
+        <input type="file" class="form-control-file" id="logo" name="photo">
+      </div>
+      <div class="form-group">
         <label for="full-name">Full name</label>
         <input type="text" class="form-control" placeholder="Elgountari ayoub" id="full-name" name="full-name">
       </div>

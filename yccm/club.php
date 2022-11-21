@@ -3,9 +3,9 @@
 $pdo = new PDO('mysql:host=localhost;port=3306;dbname=yc2', 'root', '');
 $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-$statement = $pdo->prepare("SELECT * FROM Student");
+$statement = $pdo->prepare("SELECT * FROM Club");
 $statement->execute();
-$students = $statement->fetchAll(PDO::FETCH_ASSOC);
+$clubs = $statement->fetchAll(PDO::FETCH_ASSOC);
 
 // echo '<pre>';
 // var_dump($students);
@@ -41,34 +41,29 @@ $students = $statement->fetchAll(PDO::FETCH_ASSOC);
       <tbody>
 
 
-        <tr>
-          <form class="club-row" action="">
-            <th scope="row">1</th>
-            <td class="logo"><img src="resources/media/images/club-cover/club-2.jpg" alt=""></td>
-            <td class="title">Otaku</td>
-            <td class="creationDate">2022/11/17</td>
-            <td class="description"
-              title="Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eius explicabo aliquam saepe illum perferendis dolor repudiandae voluptates error. Voluptate ut at quasquisquam maiores laborum neque soluta a atque fuga.">
-              Lorem ipsum dolor
-              sit, amet consectetur adipisicing elit. Eius explicabo aliquam saepe
-              illum perferendis
-              dolor repudiandae voluptates error. Voluptate ut at quas quisquam maiores laborum neque soluta a atque
-              fuga.
-            </td>
-            <td class="members">
-              <div class="members-icons">
-                <img src="resources/media/images/members-photos/person-1.webp" alt="member-photo"
-                  class="club--member-photo">
-                <img src="resources/media/images/members-photos/person-4.webp" alt="member-photo"
-                  class="club--member-photo">
+        <?php foreach ($clubs as $i => $club) : ?>
+          <tr>
+            <form class="club-row" action="">
+              <th scope="row"><?php echo $i + 1 ?></th>
 
-              </div>
-              <span class="more-members"><a href="member.php">+27</a></span>
-            </td>
-            <td class="action"><button class="btn btn-primary">Edit</button> <button
-                class="btn btn-danger">Delete</button></td>
-          </form>
-        </tr>
+              <td class="logo"><img src="resources/media/images/club-cover/club-2.jpg" alt=""></td>
+              <td class="title"><?php echo $club["name"] ?></td>
+              <td class="creationDate"><?php echo $club["creationDate"] ?></td>
+              <td class="description" title="<?php echo $club['description'] ?>">
+                <?php echo $club["description"] ?>
+              </td>
+              <td class="members">
+                <div class="members-icons">
+                  <img src="resources/media/images/members-photos/person-1.webp" alt="member-photo" class="club--member-photo">
+                  <img src="resources/media/images/members-photos/person-4.webp" alt="member-photo" class="club--member-photo">
+
+                </div>
+                <span class="more-members"><a href="member.php">+27</a></span>
+              </td>
+              <td class="action"><button class="btn btn-primary">Edit</button> <button class="btn btn-danger">Delete</button></td>
+            </form>
+          </tr>
+        <?php endforeach; ?>
       </tbody>
     </table>
   </div>

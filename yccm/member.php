@@ -1,3 +1,22 @@
+<?php
+
+$pdo = new PDO('mysql:host=localhost;port=3306;dbname=yc2', 'root', '');
+$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+$statement = $pdo->prepare("SELECT * FROM Student");
+$statement->execute();
+$students = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+// echo '<pre>';
+// var_dump($students);
+// echo '</pre>';
+
+?>
+
+
+
+
+
 <?php include_once("header.php") ?>
 <section class="section-member">
   <div class="container">
