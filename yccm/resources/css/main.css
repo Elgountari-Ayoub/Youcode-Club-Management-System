@@ -164,12 +164,6 @@ section.discover-clubs .details {
 
 section.discover-clubs .cover {
   height: 20rem;
-  background-image: url("../media/images/club-cover/club-2.jpg");
-  background-size: cover;
-}
-section.discover-clubs .club:nth-child(odd) .cover {
-  height: 20rem;
-  background-image: url("../media/images/club-cover/club-2.jpg");
   background-size: cover;
 }
 
@@ -409,7 +403,7 @@ form.club-row {
   display: flex;
   flex-wrap: wrap;
   gap: 2rem;
-  padding-top: 1rem;
+  padding-top: 2rem !important;
   padding-bottom: 1rem;
 
   padding-left: 4rem;

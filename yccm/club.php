@@ -1,5 +1,8 @@
 <?php
-
+session_start();
+if (!isset($_SESSION["user"])) {
+  header("location: sign-in.php");
+}
 $pdo = new PDO('mysql:host=localhost;port=3306;dbname=yc2', 'root', '');
 $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
@@ -7,25 +10,12 @@ $statement = $pdo->prepare("SELECT * FROM Club");
 $statement->execute();
 $clubs = $statement->fetchAll(PDO::FETCH_ASSOC);
 
-// echo '<pre>';
-// var_dump($students);
-// echo '</pre>';
-
 ?>
-
-
-
-
-
-
-
-
-
 
 <?php include_once("header.php") ?>
 <section class="section-club">
   <div class="container">
-    <a href="clubManagement.php" target="_blank"><button class="btn btn-primary">Add Club</button></a>
+    <a href="clubManagement.php"><button class="btn btn-primary">Add Club</button></a>
     <table class="table">
       <thead>
         <tr>

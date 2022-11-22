@@ -1,3 +1,9 @@
+<?php
+if (session_status() != PHP_SESSION_ACTIVE) {
+  session_start();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,6 +23,7 @@
 
   <link rel="stylesheet" href="resources/css/main.css">
   <link rel="stylesheet" href="resources/css/media.css">
+
 </head>
 
 <body>
@@ -27,10 +34,17 @@
       </a>
       <ul>
         <li class="home"><a href="index.php">Home</a></li>
+
         <li class="member"><a href="member.php">Members</a></li>
         <li class="club"><a href="club.php">Clubs</a></li>
       </ul>
+
+      <?php if (!isset($_SESSION["user"])) { ?>
+
       <a href="sign-in.php" style="width: 7.2rem;"><img src="resources/media/icons/sign-in-icon.svg" alt="sign-in"
           class="btn sign-in" /></a>
+      <?php } else { ?>
+      <a href="log-out.php" style="width: 7.2rem;">LOGOUt</a>
+      <?php } ?>
     </nav>
   </header>
