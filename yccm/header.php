@@ -44,7 +44,7 @@ if (session_status() != PHP_SESSION_ACTIVE) {
       <a href="sign-in.php" style="width: 7.2rem;"><img src="resources/media/icons/sign-in-icon.svg" alt="sign-in"
           class="btn sign-in" /></a>
       <?php } else { ?>
-      <a href="log-out.php" style="width: 7.2rem;">LOGOUt</a>
+      <a href="log-out.php" style="width: 7.2rem;">LOG-OUt &rarr;</a>
       <?php } ?>
     </nav>
   </header>

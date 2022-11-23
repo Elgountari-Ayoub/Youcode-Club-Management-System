@@ -16,28 +16,29 @@ $clubs = $statement->fetchAll(PDO::FETCH_ASSOC);
 <section class="discover-clubs">
   <div class="container">
     <?php foreach ($clubs as $i => $club) : ?>
-      <div class="club">
-        <div class="cover" style='background-image: url("../media/images/club-cover/club-2.jpg");'>
+    <div class="club">
+      <div class="cover" style="background-image: url('./<?php echo $club['logo'] ?>" );">
+
+      </div>
+      <div class="details">
+        <div class="details-1">
+          <div class="title"><?php echo $club["name"] ?></div>
+          <strong class="members-number"><?php echo $club["membersNUmber"] ?> Member</strong>
         </div>
-        <div class="details">
-          <div class="details-1">
-            <div class="title"><?php echo $club["name"] ?></div>
-            <strong class="members-number"><?php echo $club["membersNUmber"] ?> Member</strong>
+        <div class="description"><?php echo $club["description"] ?></div>
+        <div class="details-1">
+          <div class="members-icons">
+            <img src="resources/media/images/members-photos/person-1.webp" alt="member-photo">
+            <img src="resources/media/images/members-photos/person-4.webp" alt="member-photo">
+            <img src="resources/media/images/members-photos/person-2.webp" alt="member-photo">
+            <img src="resources/media/images/members-photos/person-3.webp" alt="member-photo">
+            <img src="resources/media/images/members-photos/person-5.webp" alt="member-photo">
+            <span>+27</span>
           </div>
-          <div class="description"><?php echo $club["description"] ?></div>
-          <div class="details-1">
-            <div class="members-icons">
-              <img src="resources/media/images/members-photos/person-1.webp" alt="member-photo">
-              <img src="resources/media/images/members-photos/person-4.webp" alt="member-photo">
-              <img src="resources/media/images/members-photos/person-2.webp" alt="member-photo">
-              <img src="resources/media/images/members-photos/person-3.webp" alt="member-photo">
-              <img src="resources/media/images/members-photos/person-5.webp" alt="member-photo">
-              <span>+27</span>
-            </div>
-            <button class="btn join"><a href="#">Join</a>
-          </div>
+          <button class="btn join"><a href="#">Join</a>
         </div>
       </div>
+    </div>
     <?php endforeach; ?>
 
 

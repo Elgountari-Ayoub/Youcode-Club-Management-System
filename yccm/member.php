@@ -29,7 +29,7 @@ $students = $statement->fetchAll(PDO::FETCH_ASSOC);
           <th scope="col">photo</th>
           <th scope="col">Full Name</th>
           <th scope="col">Class</th>
-          <th scope="col">Birthday</th>
+          <th scope="col">Age</th>
           <th scope="col">Club</th>
           <th scope="col">Role</th>
           <th scope="col">Action</th>
@@ -73,7 +73,7 @@ $students = $statement->fetchAll(PDO::FETCH_ASSOC);
               <button class="btn btn-primary">Edit</button>
             </a>
 
-            <a href="member.php?delet&id=<?= $student["id"] ?>">
+            <a href="memberManagement.php?delete&id=<?= $student["id"] ?>">
               <button class="btn btn-danger">Delete</button>
             </a>
           </td>

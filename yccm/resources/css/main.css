@@ -252,8 +252,9 @@ section.discover-clubs button a {
 
 .section-club .container,
 .section-member .container,
-.section-member-management .container {
-  min-height: 70vh;
+.section-member-management .container,
+section.discover-clubs .container {
+  min-height: 75vh !important;
 }
 .section-club .container table,
 .section-member .container table {
@@ -481,4 +482,12 @@ form.club-row {
 .section-sign .container form button.btn {
   width: fit-content;
   font-size: 1.6rem;
+}
+
+.discover-clubs .container .description {
+  /* white-space: nowrap; */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+  height: 8rem;
 }

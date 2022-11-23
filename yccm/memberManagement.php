@@ -28,8 +28,16 @@ if (isset($_GET["edit"])) {
     $statement->bindValue(":id", $id);
     $statement->execute();
     $member = $statement->fetch(PDO::FETCH_ASSOC);
-    var_dump($member);
   }
+} else if (isset($_GET["delete"])) {
+  if (isset($_GET["id"])) {
+    $id = $_GET["id"];
+    $statement = $pdo->prepare("DELETE FROM Student WHERE id = :id");
+
+    $statement->bindValue(":id", $id);
+    $statement->execute();
+  }
+  header("location: member.php");
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -42,9 +50,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   $selected_club =  $_POST['selected_club'] == "" ? null : $_POST['selected_club'];
   $role = $_POST['role'];
 
-  $statement = $pdo->prepare("INSERT INTO Student 
+  if (isset($_POST["memberId"])) {
+
+    $statement = $pdo->prepare("UPDATE student set photo = :photo, name = :name , class = :class , birthday = 	:birthday  ,clubId = :clubId, role = :role where id = :id
+    ");
+
+
+    $statement->bindValue(':id', $_POST["memberId"]);
+  } else {
+
+
+    $statement = $pdo->prepare("INSERT INTO Student 
   (photo, name, class, birthday,	clubId,	role	)
    VALUES (:photo, :name, :class, :birthday,	:clubId,	:role)");
+  }
+
   $photoPath = "download/" . $photo["name"];
   move_uploaded_file($photo["tmp_name"], $photoPath);
 
@@ -59,9 +79,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 
 
-// $pdo->prepare("INSERT INTO Club (name, creationDate, description) 
-// VALUES ('The 7 AM Club', '2022-11-19', 'You wake up an hour before your spouse and your kids and use that distraction-free 
-// time to focus on your personal well-being, with a mix of exercise, meditation and reading or learning.');");
 
 
 ?>
@@ -70,7 +87,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <section class="section-member-management">
   <div class="container">
     <form class="member-form" action="memberManagement.php" method="POST" enctype="multipart/form-data">
-
+      <?php
+      if ($member) { ?>
+      <input type="text" value=" <?php echo $member["id"] ?>" hidden name="memberId">
+      <?php } ?>
       <div class="form-group">
         <label for="Photo">Photo</label>
         <br>
@@ -97,7 +117,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       <!-- /////////////////////// -->
       <div class="form-group">
         <label for="birthday">Birthday</label>
-        <input required type="date" class="form-control" placeholder="2002-6-28" id="birthday" name="birthday">
+        <input value="<?php
+                      if ($member) {
+                        echo date('Y-m-d', strtotime($member['birthday']));
+                      } ?>" required type="date" class="form-control" placeholder="2002-6-28" id="birthday"
+          name="birthday">
       </div>
 
       <!-- //////////////////////// -->
@@ -109,7 +133,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
           <option value="">None</option>
           <?php foreach ($clubs as $i => $club) : ?>
           <option value='<?php echo $club["id"] ?>'
-            <?php echo (($member) != null && ($member["id"] == $club["id"])) ? "selected" : "" ?>>
+            <?php echo (($member) != null && ($member["clubId"] == $club["id"])) ? "selected" : "" ?>>
             <?php echo $club["name"] ?> </option>
           <?php endforeach; ?>
 
