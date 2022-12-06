@@ -3,7 +3,7 @@ session_start();
 if (isset($_SESSION["user"])) {
   header("location: index.php");
 }
-$pdo = new PDO('mysql:host=localhost;port=3306;dbname=yc2', 'root', '');
+$pdo = new PDO('mysql:host=localhost;port=3306;dbname=yc2', 'root', 'Ycode@2021');
 $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 $statement = $pdo->prepare('select * from Admin ');
@@ -45,8 +45,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       <h1 class="h3 mb-3 font-weight-normal">sign in</h1>
       <div>
         <label for="inputEmail" class="sr-only">Email address</label>
-        <input name="email" type="email" id="inputEmail" class="form-control" placeholder="Email address" required
-          autofocus>
+        <input name="email" type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
       </div>
       <div>
         <label for="inputPassword" class="sr-only">Password</label>

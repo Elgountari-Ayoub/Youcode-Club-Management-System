@@ -5,7 +5,7 @@ if (!isset($_SESSION["user"])) {
   header("location: sign-in.php");
 }
 
-$pdo = new PDO('mysql:host=localhost;port=3306;dbname=yc2', 'root', '');
+$pdo = new PDO('mysql:host=localhost;port=3306;dbname=yc2', 'root', 'Ycode@2021');
 $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 $club = null;
@@ -71,7 +71,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <form class="member-form" action="clubManagement.php" method="POST" enctype="multipart/form-data">
       <?php
       if ($club) { ?>
-      <input type="text" value=" <?php echo $club["id"] ?>" hidden name="clubId">
+        <input type="text" value=" <?php echo $club["id"] ?>" hidden name="clubId">
       <?php } ?>
       <div class="form-group">
         <label for="chooseLogo">Logo</label>
@@ -80,20 +80,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       </div>
       <div class="form-group">
         <label for="full-name">Club name</label>
-        <input value="<?php echo $club == null ? "" : $club["name"] ?>" type="text" class="form-control"
-          placeholder="Reading Club" id="full-name" name="name">
+        <input value="<?php echo $club == null ? "" : $club["name"] ?>" type="text" class="form-control" placeholder="Reading Club" id="full-name" name="name">
       </div>
       <div class="form-group">
         <label for="creation-date">Creation-date</label>
         <input value="<?php if ($club) {
                         echo date('Y-m-d', strtotime($club["creationDate"]));
-                      } ?>" required type="date" class="form-control" placeholder="2002-6-28" id="creation-date"
-          name="creation-date">
+                      } ?>" required type="date" class="form-control" placeholder="2002-6-28" id="creation-date" name="creation-date">
       </div>
       <div class="form-group">
         <label for="description">Description</label>
-        <textarea name="description" id="description" rows="5"
-          class="form-control"><?php echo $club == null ? "" : $club["description"] ?></textarea>
+        <textarea name="description" id="description" rows="5" class="form-control"><?php echo $club == null ? "" : $club["description"] ?></textarea>
       </div>
 
       <button type="submit" class="btn btn-primary">Save</button>

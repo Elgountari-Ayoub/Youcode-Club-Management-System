@@ -3,7 +3,7 @@ session_start();
 if (!isset($_SESSION["user"])) {
   header("location: sign-in.php");
 }
-$pdo = new PDO('mysql:host=localhost;port=3306;dbname=yc2', 'root', '');
+$pdo = new PDO('mysql:host=localhost;port=3306;dbname=yc2', 'root', 'Ycode@2021');
 $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 
@@ -89,7 +89,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <form class="member-form" action="memberManagement.php" method="POST" enctype="multipart/form-data">
       <?php
       if ($member) { ?>
-      <input type="text" value=" <?php echo $member["id"] ?>" hidden name="memberId">
+        <input type="text" value=" <?php echo $member["id"] ?>" hidden name="memberId">
       <?php } ?>
       <div class="form-group">
         <label for="Photo">Photo</label>
@@ -98,8 +98,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       </div>
       <div class="form-group">
         <label for="full-name">Full name</label>
-        <input type="text" value="<?php echo $member == null ? "" : $member["name"] ?>" class="form-control"
-          placeholder="Elgountari ayoub" id="full-name" name="full-name" required>
+        <input type="text" value="<?php echo $member == null ? "" : $member["name"] ?>" class="form-control" placeholder="Elgountari ayoub" id="full-name" name="full-name" required>
       </div>
 
       <div class="form-group">
@@ -120,8 +119,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <input value="<?php
                       if ($member) {
                         echo date('Y-m-d', strtotime($member['birthday']));
-                      } ?>" required type="date" class="form-control" placeholder="2002-6-28" id="birthday"
-          name="birthday">
+                      } ?>" required type="date" class="form-control" placeholder="2002-6-28" id="birthday" name="birthday">
       </div>
 
       <!-- //////////////////////// -->
@@ -132,9 +130,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <select class="form-control" id="class" name="selected_club">
           <option value="">None</option>
           <?php foreach ($clubs as $i => $club) : ?>
-          <option value='<?php echo $club["id"] ?>'
-            <?php echo (($member) != null && ($member["clubId"] == $club["id"])) ? "selected" : "" ?>>
-            <?php echo $club["name"] ?> </option>
+            <option value='<?php echo $club["id"] ?>' <?php echo (($member) != null && ($member["clubId"] == $club["id"])) ? "selected" : "" ?>>
+              <?php echo $club["name"] ?> </option>
           <?php endforeach; ?>
 
         </select>

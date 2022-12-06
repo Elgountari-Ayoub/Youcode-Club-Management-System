@@ -3,7 +3,7 @@ session_start();
 if (!isset($_SESSION["user"])) {
   header("location: sign-in.php");
 }
-$pdo = new PDO('mysql:host=localhost;port=3306;dbname=yc2', 'root', '');
+$pdo = new PDO('mysql:host=localhost;port=3306;dbname=yc2', 'root', 'Ycode@2021');
 $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 $statement = $pdo->prepare("SELECT * FROM Student");
@@ -37,17 +37,17 @@ $students = $statement->fetchAll(PDO::FETCH_ASSOC);
       </thead>
       <tbody>
         <?php foreach ($students as $i => $student) : ?>
-        <tr>
-          <th scope="row"><?php echo $i + 1 ?></th>
-          <th class="logo"><img src="<?= $student["photo"] ?>" alt=""></th>
+          <tr>
+            <th scope="row"><?php echo $i + 1 ?></th>
+            <th class="logo"><img src="<?= $student["photo"] ?>" alt=""></th>
 
-          <td><?php echo $student["name"] ?></td>
-          <td><?php echo $student["class"] ?></td>
-          <td><?php $birthy = strtotime($student["birthday"]);
+            <td><?php echo $student["name"] ?></td>
+            <td><?php echo $student["class"] ?></td>
+            <td><?php $birthy = strtotime($student["birthday"]);
                 $birthy = date('Y', $birthy);
                 $age = date('Y') - $birthy;
                 echo $age; ?></td>
-          <td><?php
+            <td><?php
                 $clubId = $student["clubId"];
                 $haseClub = false;
                 if ($clubId != null) {
@@ -63,21 +63,21 @@ $students = $statement->fetchAll(PDO::FETCH_ASSOC);
                 };
                 ?></td>
 
-          <td><?php
+            <td><?php
                 echo $haseClub ? $student["role"] : "<pre style='font-size:2rem ; text-align:start'>>:</pre>";;
                 // $haseClub == true ??  echo $student["role"]
                 ?></td>
 
-          <td class="action">
-            <a href="memberManagement.php?edit&id=<?= $student["id"] ?>">
-              <button class="btn btn-primary">Edit</button>
-            </a>
+            <td class="action">
+              <a href="memberManagement.php?edit&id=<?= $student["id"] ?>">
+                <button class="btn btn-primary">Edit</button>
+              </a>
 
-            <a href="memberManagement.php?delete&id=<?= $student["id"] ?>">
-              <button class="btn btn-danger">Delete</button>
-            </a>
-          </td>
-        </tr>
+              <a href="memberManagement.php?delete&id=<?= $student["id"] ?>">
+                <button class="btn btn-danger">Delete</button>
+              </a>
+            </td>
+          </tr>
         <?php endforeach; ?>
 
       </tbody>

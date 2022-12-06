@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 20, 2022 at 03:15 PM
+-- Generation Time: Nov 23, 2022 at 08:31 PM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -38,7 +38,8 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`id`, `email`, `pass`) VALUES
-(0, 'admin', 'admin');
+(1, 'admin@gmail.com', 'admin'),
+(3, 'user', 'user');
 
 -- --------------------------------------------------------
 
@@ -48,8 +49,8 @@ INSERT INTO `admin` (`id`, `email`, `pass`) VALUES
 
 CREATE TABLE `club` (
   `id` int(11) NOT NULL,
-  `name` varchar(100) DEFAULT NULL,
   `logo` varchar(2022) DEFAULT NULL,
+  `name` varchar(100) DEFAULT NULL,
   `creationDate` date DEFAULT NULL,
   `description` varchar(2022) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -58,9 +59,8 @@ CREATE TABLE `club` (
 -- Dumping data for table `club`
 --
 
-INSERT INTO `club` (`id`, `name`, `logo`, `creationDate`, `description`) VALUES
-(1, 'The 5 AM Club', NULL, '2022-11-19', 'You wake up an hour before your spouse and your kids and use that distraction-free \r\ntime to focus on your personal well-being, with a mix of exercise, meditation and reading or learning.'),
-(2, 'The 6 AM Club', NULL, '2022-11-20', 'You wake up an hour before your spouse and your kids and use that distraction-free \r\ntime to focus on your personal well-being');
+INSERT INTO `club` (`id`, `logo`, `name`, `creationDate`, `description`) VALUES
+(17, 'download/backy.png', 'THE 5 AM CLUB', '2022-11-23', 'improve your life');
 
 -- --------------------------------------------------------
 
@@ -83,8 +83,7 @@ CREATE TABLE `student` (
 --
 
 INSERT INTO `student` (`id`, `photo`, `name`, `class`, `birthday`, `clubId`, `role`) VALUES
-(1, NULL, 'ayoub', 'Ada', '2002-06-28', NULL, NULL),
-(2, NULL, 'ismail', 'Ada', '2000-02-18', NULL, NULL);
+(90, 'download/elgountari_ayoub.jpeg', 'Elgountari Ayoub', 'Ada Lovelace', '2002-06-28', 17, 'admin');
 
 --
 -- Indexes for dumped tables
@@ -94,7 +93,8 @@ INSERT INTO `student` (`id`, `photo`, `name`, `class`, `birthday`, `clubId`, `ro
 -- Indexes for table `admin`
 --
 ALTER TABLE `admin`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `admin_uk` (`email`);
 
 --
 -- Indexes for table `club`
@@ -107,23 +107,29 @@ ALTER TABLE `club`
 --
 ALTER TABLE `student`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `clubId` (`clubId`);
+  ADD KEY `student_ibfk_1` (`clubId`);
 
 --
 -- AUTO_INCREMENT for dumped tables
 --
 
 --
+-- AUTO_INCREMENT for table `admin`
+--
+ALTER TABLE `admin`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
 -- AUTO_INCREMENT for table `club`
 --
 ALTER TABLE `club`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `student`
 --
 ALTER TABLE `student`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=91;
 
 --
 -- Constraints for dumped tables
@@ -133,7 +139,7 @@ ALTER TABLE `student`
 -- Constraints for table `student`
 --
 ALTER TABLE `student`
-  ADD CONSTRAINT `student_ibfk_1` FOREIGN KEY (`clubId`) REFERENCES `club` (`id`);
+  ADD CONSTRAINT `student_ibfk_1` FOREIGN KEY (`clubId`) REFERENCES `club` (`id`) ON DELETE SET NULL ON UPDATE NO ACTION;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

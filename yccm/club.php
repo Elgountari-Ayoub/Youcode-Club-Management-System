@@ -3,7 +3,7 @@ session_start();
 if (!isset($_SESSION["user"])) {
   header("location: sign-in.php");
 }
-$pdo = new PDO('mysql:host=localhost;port=3306;dbname=yc2', 'root', '');
+$pdo = new PDO('mysql:host=localhost;port=3306;dbname=yc2', 'root', 'Ycode@2021');
 $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 $statement = $pdo->prepare("SELECT * FROM Club");
